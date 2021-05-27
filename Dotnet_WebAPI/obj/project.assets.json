@@ -1418,11 +1418,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Atheek\\Desktop\\RESTful API with ASP.NET Core Web API - Create and Consume\\app\\zz\\Dotnet_WebAPI\\Dotnet_WebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Atheek\\Desktop\\git repo\\NationalPark-Dotnet_Angular-\\Dotnet_WebAPI\\Dotnet_WebAPI.csproj",
       "projectName": "Dotnet_WebAPI",
-      "projectPath": "C:\\Users\\Atheek\\Desktop\\RESTful API with ASP.NET Core Web API - Create and Consume\\app\\zz\\Dotnet_WebAPI\\Dotnet_WebAPI.csproj",
+      "projectPath": "C:\\Users\\Atheek\\Desktop\\git repo\\NationalPark-Dotnet_Angular-\\Dotnet_WebAPI\\Dotnet_WebAPI.csproj",
       "packagesPath": "C:\\Users\\Atheek\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Atheek\\Desktop\\RESTful API with ASP.NET Core Web API - Create and Consume\\app\\zz\\Dotnet_WebAPI\\obj\\",
+      "outputPath": "C:\\Users\\Atheek\\Desktop\\git repo\\NationalPark-Dotnet_Angular-\\Dotnet_WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
