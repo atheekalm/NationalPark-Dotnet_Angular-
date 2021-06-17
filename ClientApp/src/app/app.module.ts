@@ -1,3 +1,4 @@
+import { TrailsComponent } from './home/Trails/Trails.component';
 import { NavComponent } from './home/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,7 +17,8 @@ import { NationalparkComponent } from './home/nationalpark/nationalpark.componen
     AppComponent,
     NavComponent,
     HomeComponent,
-    NationalparkComponent
+    NationalparkComponent,
+    TrailsComponent
 
   ],
   imports: [

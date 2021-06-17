@@ -2,6 +2,7 @@
 <div class="parky d-flex justify-content-center">
   <mat-card class="example-card">
     <mat-card-header>
+      {{nationalparkInput.id}}
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{nationalparkInput.name}}</mat-card-title>
     </mat-card-header>
@@ -13,7 +14,7 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Trai;</th>
+                <th scope="col">Trai</th>
                 <th scope="col">Distance</th>
                 <th scope="col">Elevation Gain</th>
                 <th scope="col">Difficulty</th>
@@ -22,18 +23,17 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
+                <div *ngFor="let trail of traildata">
+                  <app-Trails [trailInput]='traildata'></app-Trails>
+                </div>
               </tr>
             </tbody>
           </table>
         </mat-card-content>
       </div>
       <div class="col-md-4  ">
-        <img class="container rounded" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <img class="container rounded" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+          alt="Photo of a Shiba Inu">
       </div>
     </div>
   </mat-card>
