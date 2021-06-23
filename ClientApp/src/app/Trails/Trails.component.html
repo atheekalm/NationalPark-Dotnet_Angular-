@@ -1,0 +1,38 @@
+<div class="container">
+  <button class="mt-5 btn btn-outline-success" (click)="openModal()">Add Trail</button>
+  <table class="table mt-5">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Trai</th>
+        <th scope="col">Distance</th>
+        <th scope="col">Elevation Gain</th>
+        <th scope="col">Difficulty</th>
+        <th scope="col"></th>
+
+      </tr>
+    </thead>
+    <tbody *ngFor="let trail of trails">
+      <tr>
+
+        <th scope="row"></th>
+        <td>{{trail.name}}</td>
+        <td>{{trail.distance}} Km</td>
+        <td>{{trail.types}}</td>
+        <td>{{trail.types}}</td>
+        <td>
+
+          <a class="text-primary btn">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
+          </a>
+          <a class="text-danger btn">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+          </a>
+
+
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

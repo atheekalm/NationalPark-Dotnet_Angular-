@@ -1,4 +1,6 @@
-import { TrailsComponent } from './home/Trails/Trails.component';
+import { CreateTrailComponent } from './forms/CreateTrail/CreateTrail.component';
+import { CreateNationalParkComponent } from './forms/CreateNationalPark/CreateNationalPark.component';
+import { RouterModule } from '@angular/router';
 import { NavComponent } from './home/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,7 +12,10 @@ import { MeterialModule } from './meterial/meterial.module';
 import { HomeComponent } from './home/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NationalparkComponent } from './home/nationalpark/nationalpark.component';
-
+import { LoginComponent } from './Login/Login.component';
+import { nroots } from './routes';
+import { NationalParksComponent } from './NationalParks/NationalParks.component';
+import { TrailsComponent } from './Trails/Trails.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +23,11 @@ import { NationalparkComponent } from './home/nationalpark/nationalpark.componen
     NavComponent,
     HomeComponent,
     NationalparkComponent,
-    TrailsComponent
-
+    LoginComponent,
+    NationalParksComponent,
+    TrailsComponent,
+    CreateNationalParkComponent,
+    CreateTrailComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,8 +35,9 @@ import { NationalparkComponent } from './home/nationalpark/nationalpark.componen
     BrowserAnimationsModule,
     MeterialModule,
     HttpClientModule,
+    RouterModule.forRoot(nroots),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

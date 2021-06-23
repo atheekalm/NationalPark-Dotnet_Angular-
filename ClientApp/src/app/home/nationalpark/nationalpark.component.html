@@ -21,11 +21,15 @@
 
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <div *ngFor="let trail of traildata">
-                  <app-Trails [trailInput]='traildata'></app-Trails>
-                </div>
+            <tbody *ngFor="let trail of trailsInput">
+              <tr *ngIf="nationalparkInput.id==trail.yalaId">
+
+                <th scope="row"></th>
+                <td>{{trail.name}}</td>
+                <td>{{trail.distance}} Km</td>
+                <td>{{trail.types}}</td>
+                <td>{{trail.types}}</td>
+
               </tr>
             </tbody>
           </table>

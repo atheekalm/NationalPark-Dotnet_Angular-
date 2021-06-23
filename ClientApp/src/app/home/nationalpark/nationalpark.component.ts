@@ -10,25 +10,23 @@ import { NationalparkService } from 'src/app/services/nationalpark.service';
 })
 export class NationalparkComponent implements OnInit {
   @Input() nationalparkInput: nationalpark;
-  traildata: trails[];
-  constructor(private nationalService:NationalparkService) {}
+  @Input() trailsInput:trails;
+  trails: trails[];
+  constructor(private nationalService: NationalparkService) {}
 
   ngOnInit() {
-  this.loadTrails()
+    // this.loadTrails();
   }
 
   loadTrails() {
-    this.nationalService.gettrails(5).subscribe(
+    this.nationalService.getAlltrails().subscribe(
       (trail: trails[]) => {
-        this.traildata = trail
+        this.trails = trail;
+        console.log(this.trails)
       },
       (error) => {
         console.log(error);
       }
     );
   }
-
-
-
-  
 }

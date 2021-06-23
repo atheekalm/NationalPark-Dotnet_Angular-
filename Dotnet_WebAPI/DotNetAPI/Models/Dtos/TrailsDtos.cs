@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Dotnet_WebAPI.Models.Dtos;
+using DotNetAPI.Models.Dtos;
 using static Models.Trails;
 
 namespace Models.Dtos
@@ -11,7 +12,7 @@ namespace Models.Dtos
         public string Name { get; set; }
         [Required]
         public string Distance { get; set; }
-        public DifficultyTypes Types { get; set; }
+        public DifficultyTyesDto Types { get; set; }
         public NationalParkDtos Yala { get; set; }
         public int YalaId { get; set; }
     }

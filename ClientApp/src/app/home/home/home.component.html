@@ -1,7 +1,9 @@
+
+<!-- <app-NationalParks></app-NationalParks> -->
 <div class="container ">
   <div class="row">
     <div class="park-card m-1" *ngFor="let nationalpark of nationalparks">
-      <app-nationalpark [nationalparkInput]="nationalpark"></app-nationalpark>
+      <app-nationalpark [nationalparkInput]="nationalpark" [trailsInput] = "trails"></app-nationalpark>
     </div>
   </div>
 </div>
