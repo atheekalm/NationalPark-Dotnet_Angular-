@@ -6,7 +6,7 @@
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{nationalparkInput.name}}</mat-card-title>
     </mat-card-header>
-    <div class="row">
+    <div class="row" *ngIf="var">
       <div class="col-md-8">
         <mat-card-content class="container">
           <h4>{{nationalparkInput.established}}</h4>

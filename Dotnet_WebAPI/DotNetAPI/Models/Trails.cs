@@ -19,8 +19,8 @@ namespace Models
             Expert
         }
         public DifficultyTypes Types { get; set; }
-        public NationalPark Yala { get; set; }
-        public int YalaId { get; set; }
+        public NationalPark NationalPark { get; set; }
+        public int NationalParkId { get; set; }
         public DateTime Created { get; set; }
     }
 }

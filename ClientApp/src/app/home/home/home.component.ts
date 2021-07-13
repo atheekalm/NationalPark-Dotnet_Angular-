@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
     this.loadNationalParks();
     this.loadTrails();
     
+    
   }
 
   loadNationalParks() {

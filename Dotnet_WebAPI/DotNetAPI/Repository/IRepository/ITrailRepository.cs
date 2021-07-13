@@ -9,7 +9,7 @@ namespace Dotnet_WebAPI.Repository.IRepository
     public interface ITrailRepository
     {
         ICollection<Trails> GetTrails();
-        ICollection<Trails> GetTrailPark(int id);
+        Trails GetTrailPark(int id);
         Trails GetTrail(int parkId);
         bool theTrailsExists(string name);
         bool theTrailsExists(int Id);

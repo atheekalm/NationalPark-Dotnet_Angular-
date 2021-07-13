@@ -14,9 +14,7 @@ namespace Dotnet_WebAPI.Repository
         private readonly DataContext _context;
         public TrailRepository(DataContext context)
         {
-            _context = context;
-
-        }
+            _context = context;    }
         public bool CreateTrail(Trails Trails)
         {
             _context.Trails.Add(Trails);
@@ -31,7 +29,7 @@ namespace Dotnet_WebAPI.Repository
 
         public Trails GetTrail(int parkId)
         {
-            return _context.Trails.Include(c => c.Yala).FirstOrDefault(id => id.Id == parkId);
+            return _context.Trails.Include(c=>c.NationalPark).FirstOrDefault(id => id.Id == parkId);
         }
 
         public ICollection<Trails> GetTrailPark(int id)

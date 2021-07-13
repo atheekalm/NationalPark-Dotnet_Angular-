@@ -13,10 +13,11 @@ export class NationalparkComponent implements OnInit {
   @Input() trailsInput:trails;
   trails: trails[];
   constructor(private nationalService: NationalparkService) {}
-
+var:boolean=false;
   ngOnInit() {
     // this.loadTrails();
   }
+
 
   loadTrails() {
     this.nationalService.getAlltrails().subscribe(
