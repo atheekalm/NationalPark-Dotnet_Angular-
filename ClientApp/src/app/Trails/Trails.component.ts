@@ -21,22 +21,22 @@ export class TrailsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.loadTrails();
+    // this.loadTrails();
   }
 
   openModal(){
     this.dialog.open(CreateTrailComponent)
   }
 
-  loadTrails() {
-    this.nationalparkser.getAlltrails().subscribe(
-      (trail: trails[]) => {
-        this.trails = trail;
-        console.log(this.trails);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+  // loadTrails() {
+  //   this.nationalparkser.getAlltrails().subscribe(
+  //     (trail: trails[]) => {
+  //       this.trails = trail;
+  //       console.log(this.trails);
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using Dotnet_WebAPI.Models;
 using Dotnet_WebAPI.Models.Dtos;
@@ -24,28 +25,27 @@ namespace Dotnet_WebAPI.Controllers
 
 
         [HttpGet]
-        public IActionResult GetNationalParks()
+        public IActionResult GetTrails()
         {
             var fromRepo = _trailRepository.GetTrails();
-            // var results = new List<YalaDtos>();
-            // foreach (var item in result)
-            // {
-            //     results.Add(_Mapper.Map<YalaDtos>(item));
-            // }  
-            // return Ok(results);
             var toReturn = _Mapper.Map<IEnumerable<TrailsDtos>>(fromRepo);
             return Ok(toReturn);
-
-
         }
-        [HttpGet("{id}", Name = "GetTrails")]
-        public IActionResult GetTrails(int id)
+        // [HttpGet("{id}", Name = "GetTrails")]
+        // public IActionResult GetTrails(int id)
+        // {
+        //     var result = _trailRepository.GetTrail(id);
+        //     if (result == null)
+        //         return NotFound();
+        //     var response = _Mapper.Map<TrailsDtos>(result);
+        //     return Ok(response);
+        // }
+
+        [HttpGet("{id}",Name ="TrailsByNationalPark")]
+        public async Task<ActionResult<TrailsDtos>> GetTrailsInPark(int id)
         {
-            var result = _trailRepository.GetTrail(id);
-            if (result == null)
-                return NotFound();
-            var response = _Mapper.Map<TrailsDtos>(result);
-            return Ok(response);
+            var trailsResult = await _trailRepository.GetTrailsInNationalPark(id);
+            return Ok(_Mapper.Map<IEnumerable<TrailsDtos>>(trailsResult));
         }
 
         [HttpPost]
@@ -54,21 +54,21 @@ namespace Dotnet_WebAPI.Controllers
             if (updeDtos == null)
                 return BadRequest();
 
-            if (_trailRepository.theTrailsExists(updeDtos.Name))
+            if (_trailRepository.TrailsExists(updeDtos.Name))
                 return StatusCode(404, "The Name Already Taken");
 
             var dto = _Mapper.Map<Trails>(updeDtos);
             if (!_trailRepository.CreateTrail(dto))
                 return BadRequest();
 
-            return CreatedAtRoute("GetTrails", new { id = dto.Id }, dto);
+            return CreatedAtRoute("GetTrails", new { id = dto.Id }, updeDtos);
         }
         [HttpPatch("{id}", Name = "UpdateTrail")]
         public IActionResult UpdateTrail(int id, UpdeDtos updeDtos)
         {
             if (updeDtos == null || id != updeDtos.Id)
                 return BadRequest();
-            if (_trailRepository.theTrailsExists(updeDtos.Name))
+            if (_trailRepository.TrailsExists(updeDtos.Name))
                 return BadRequest("The Name Already taken");
 
             var dto = _Mapper.Map<Trails>(updeDtos);
@@ -80,7 +80,7 @@ namespace Dotnet_WebAPI.Controllers
         [HttpDelete("{id}", Name = "DeleteTrail")]
         public IActionResult DeleteTrail(int id)
         {
-            if (!_trailRepository.theTrailsExists(id))
+            if (!_trailRepository.TrailsExists(id))
                 return BadRequest("No Park Found");
             var trail = _trailRepository.GetTrail(id);
 

@@ -11,6 +11,6 @@ namespace Models.Dtos
         [Required]
         public string Distance { get; set; }
         public DifficultyTypes Types { get; set; }
-        public int YalaId { get; set; }
+        public int NationalParkId { get; set; }
     }
 }

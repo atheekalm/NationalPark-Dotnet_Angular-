@@ -2,18 +2,18 @@
 <div class="parky d-flex justify-content-center">
   <mat-card class="example-card">
     <mat-card-header>
-      {{nationalparkInput.id}}
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{nationalparkInput.name}}</mat-card-title>
+      <!-- <mat-card-title>{{trails.name}}</mat-card-title> -->
+
     </mat-card-header>
-    <div class="row" *ngIf="var">
+    <div class="row" >
       <div class="col-md-8">
         <mat-card-content class="container">
-          <h4>{{nationalparkInput.established}}</h4>
+          <!-- <h4>{{nationalparkInput.established}}</h4> -->
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">#</th>
                 <th scope="col">Trai</th>
                 <th scope="col">Distance</th>
                 <th scope="col">Elevation Gain</th>
@@ -21,15 +21,13 @@
 
               </tr>
             </thead>
-            <tbody *ngFor="let trail of trailsInput">
-              <tr *ngIf="nationalparkInput.id==trail.yalaId">
+            <tbody *ngFor="let trail of trails">
+              <tr >
 
-                <th scope="row"></th>
+                <td scope="row">{{trail.name}}</td>
+                <td>{{trail.distance/1000}} miles</td>
+                <td> {{trail.types}}</td>
                 <td>{{trail.name}}</td>
-                <td>{{trail.distance}} Km</td>
-                <td>{{trail.types}}</td>
-                <td>{{trail.types}}</td>
-
               </tr>
             </tbody>
           </table>

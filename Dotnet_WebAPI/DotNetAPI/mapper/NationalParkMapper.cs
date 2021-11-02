@@ -13,7 +13,6 @@ namespace Dotnet_WebAPI.mapper
             CreateMap<NationalPark, NationalParkDtos>().ReverseMap();
             CreateMap<Trails, TrailsDtos>().ReverseMap();
             CreateMap<Trails, UpdeDtos>().ReverseMap();
-            CreateMap<NationalPark, GetTrailsByNationalParkDto>().ReverseMap();
         }
     }
 }

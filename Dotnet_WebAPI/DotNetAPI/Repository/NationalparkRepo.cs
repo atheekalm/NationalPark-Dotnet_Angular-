@@ -12,28 +12,27 @@ namespace Dotnet_WebAPI.Repository
         public NationalparkRepo(DataContext context)
         {
             _context = context;
-
         }
-        public bool CreatePark(NationalPark yala)
+        public bool CreateNationalPark(NationalPark NationalPark)
         {
-            _context.Yala.Add(yala);
+            _context.NationalParks.Add(NationalPark);
             return Save();
         }
 
-        public bool DeletePark(NationalPark yala)
+        public bool DeleteNationalPark(NationalPark NationalPark)
         {
-            _context.Yala.Remove(yala);
+            _context.NationalParks.Remove(NationalPark);
             return Save();
         }
 
-        public NationalPark Getpark(int parkId)
+        public NationalPark GetNationalPark(int parkId)
         {
-            return _context.Yala.FirstOrDefault(id => id.Id == parkId);
+            return _context.NationalParks.FirstOrDefault(id => id.Id == parkId);
         }
 
-        public ICollection<NationalPark> Getparks()
+        public ICollection<NationalPark> GetNationalParks()
         {
-            return _context.Yala.OrderBy(o=>o.Name).ToList();
+            return _context.NationalParks.OrderBy(o=>o.Name).ToList();
         }
 
         public bool Save()
@@ -41,20 +40,23 @@ namespace Dotnet_WebAPI.Repository
             return _context.SaveChanges() >= 0 ? true : false;
         }
 
-        public bool theParkExists(string name)
+        public bool NationalParkExists(string name)
         {
-            return _context.Yala.Any(n => n.Name.ToLower().Trim() == name.ToLower().Trim());
+            return _context.NationalParks.Any(n => n.Name.ToLower().Trim() == name.ToLower().Trim());
         }
 
-        public bool theParkExists(int Id)
+        public bool NationalParkExists(int Id)
         {
-            return _context.Yala.Any(id => id.Id == Id);
+            return _context.NationalParks.Any(id => id.Id == Id);
         }
 
-        public bool UpdatePark(NationalPark yala)
+        public bool UpdateNationalPark(NationalPark NationalPark)
         {
-            _context.Yala.Update(yala);
+            _context.NationalParks.Update(NationalPark);
             return Save();
         }
+        
+
+       
     }
 }

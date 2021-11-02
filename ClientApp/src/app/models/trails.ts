@@ -6,5 +6,6 @@ export interface trails {
   distance: string;
   types: number;
   
+  
   yala?: nationalpark[];
 }

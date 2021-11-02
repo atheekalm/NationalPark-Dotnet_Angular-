@@ -11,7 +11,7 @@ import { trails } from 'src/app/models/trails';
 })
 export class HomeComponent implements OnInit {
   nationalparks: nationalpark[];
-  trails: trails[];
+  trail: trails[];
   constructor(
     private nationalparkser: NationalparkService,
     private http: HttpClient
@@ -19,9 +19,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.loadNationalParks();
-    this.loadTrails();
-    
-    
+    // this.loadTrails();
   }
 
   loadNationalParks() {
@@ -34,16 +32,16 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-  loadTrails() {
-    this.nationalparkser.getAlltrails().subscribe(
-      (trail: trails[]) => {
-        this.trails = trail;
-        console.log(this.trails)
+  // loadTrails() {
+  //   this.nationalparkser.getAlltrails().subscribe(
+  //     (trail: trails[]) => {
+  //       this.trail = trail;
+  //       console.log(this.trail)
 
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 }

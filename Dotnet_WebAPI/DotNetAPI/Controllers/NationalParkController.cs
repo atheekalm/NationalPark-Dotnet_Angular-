@@ -11,12 +11,12 @@ namespace Dotnet_WebAPI.Controllers
     [Route("[controller]")]
     public class NationalParkController : ControllerBase
     {
-        private readonly INationalparkRepo _YalaRepo;
+        private readonly INationalparkRepo _NationalparkRepo;
         private readonly IMapper _Mapper;
         public NationalParkController(INationalparkRepo YalaRepo, IMapper Mapper)
         {
             _Mapper = Mapper;
-            _YalaRepo = YalaRepo;
+            _NationalparkRepo = YalaRepo;
 
         }
 
@@ -24,14 +24,14 @@ namespace Dotnet_WebAPI.Controllers
         [HttpGet]
         public IActionResult GetNationalParks()
         {
-            var fromRepo = _YalaRepo.Getparks();
+            var result = _NationalparkRepo.GetNationalParks();
             // var results = new List<YalaDtos>();
             // foreach (var item in result)
             // {
             //     results.Add(_Mapper.Map<YalaDtos>(item));
             // }
             // return Ok(results);
-            var toReturn = _Mapper.Map<IEnumerable<NationalParkDtos>>(fromRepo);
+            var Returnresult = _Mapper.Map<IEnumerable<NationalParkDtos>>(result);
             //var objDto = new NationalParkDto()
             //{
             //    Created = obj.Created,
@@ -39,14 +39,14 @@ namespace Dotnet_WebAPI.Controllers
             //    Name = obj.Name,
             //    State = obj.State,
             //};
-            return Ok(toReturn);
+            return Ok(Returnresult);
 
 
         }
         [HttpGet("{id}", Name = "GetNationalPark")]
         public IActionResult GetNationalPark(int id)
         {
-            var result = _YalaRepo.Getpark(id);
+            var result = _NationalparkRepo.GetNationalPark(id);
             if (result == null)
                 return NotFound();
             var response = _Mapper.Map<NationalParkDtos>(result);
@@ -54,30 +54,30 @@ namespace Dotnet_WebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreatePark(NationalParkDtos yalaDtos)
+        public IActionResult CreatePark(NationalParkDtos NationalParkDto)
         {
-            if (yalaDtos == null)
+            if (NationalParkDto == null)
                 return BadRequest();
 
-            if (_YalaRepo.theParkExists(yalaDtos.Name))
+            if (_NationalparkRepo.NationalParkExists(NationalParkDto.Name))
                 return StatusCode(404, "The Name Already Taken");
 
-            var dto = _Mapper.Map<NationalPark>(yalaDtos);
-            if (!_YalaRepo.CreatePark(dto))
+            var dto = _Mapper.Map<NationalPark>(NationalParkDto);
+            if (!_NationalparkRepo.CreateNationalPark(dto))
                 return BadRequest();
 
-            return CreatedAtRoute("GetNationalPark", new { id = dto.Id }, dto);
+            return CreatedAtRoute("GetNationalPark", new { id = dto.Id }, NationalParkDto);
         }
         [HttpPatch("{id}", Name = "UpdateNationalPark")]
-        public IActionResult UpdatePark(int id, NationalParkDtos yalaDtos)
+        public IActionResult UpdatePark(int id, NationalParkDtos NationalParkDto)
         {
-            if(yalaDtos==null || id!=yalaDtos.Id)
+            if(NationalParkDto==null || id!=NationalParkDto.Id)
                 return BadRequest();
-            if(_YalaRepo.theParkExists(yalaDtos.Name))
+            if(_NationalparkRepo.NationalParkExists(NationalParkDto.Name))
                 return BadRequest("The Name Already taken");
             
-             var dto = _Mapper.Map<NationalPark>(yalaDtos);
-            if (!_YalaRepo.UpdatePark(dto))
+             var dto = _Mapper.Map<NationalPark>(NationalParkDto);
+            if (!_NationalparkRepo.UpdateNationalPark(dto))
                 return BadRequest();
 
             return NoContent();
@@ -85,11 +85,11 @@ namespace Dotnet_WebAPI.Controllers
         [HttpDelete("{id}", Name = "DeletePark")]
         public IActionResult DeletePark(int id)
         {
-            if(!_YalaRepo.theParkExists(id))
+            if(!_NationalparkRepo.NationalParkExists(id))
                 return BadRequest("No Park Found");
-            var park = _YalaRepo.Getpark(id);
+            var park = _NationalparkRepo.GetNationalPark(id);
             
-            if (!_YalaRepo.DeletePark(park))
+            if (!_NationalparkRepo.DeleteNationalPark(park))
                 return BadRequest("Cant Response");
 
             return NoContent();

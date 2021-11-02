@@ -6,13 +6,13 @@ namespace Dotnet_WebAPI.Repository.IRepository
 {
     public interface INationalparkRepo
     {
-        ICollection<NationalPark> Getparks();
-        NationalPark Getpark(int parkId);
-        bool theParkExists(string name);
-        bool theParkExists(int Id);
-        bool CreatePark(NationalPark yala);
-        bool UpdatePark(NationalPark yala);
-        bool DeletePark(NationalPark yala);
+        ICollection<NationalPark> GetNationalParks();
+        NationalPark GetNationalPark(int NationalParkId);
+        bool NationalParkExists(string name);
+        bool NationalParkExists(int Id);
+        bool CreateNationalPark(NationalPark NationalPark);
+        bool UpdateNationalPark(NationalPark NationalPark);
+        bool DeleteNationalPark(NationalPark NationalPark);
         bool Save();
     }
 }

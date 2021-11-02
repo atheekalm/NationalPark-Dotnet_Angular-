@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dotnet_WebAPI.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210430075535_addingpictures")]
-    partial class addingpictures
+    [Migration("20211007080731_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,7 +18,7 @@ namespace Dotnet_WebAPI.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.5");
 
-            modelBuilder.Entity("Dotnet_WebAPI.Models.Yala", b =>
+            modelBuilder.Entity("Dotnet_WebAPI.Models.NationalPark", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -43,7 +43,7 @@ namespace Dotnet_WebAPI.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Yala");
+                    b.ToTable("NationalParks");
                 });
 
             modelBuilder.Entity("Models.Trails", b =>
@@ -63,28 +63,33 @@ namespace Dotnet_WebAPI.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Types")
+                    b.Property<int>("NationalParkId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("YalaId")
+                    b.Property<int>("Types")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("YalaId");
+                    b.HasIndex("NationalParkId");
 
                     b.ToTable("Trails");
                 });
 
             modelBuilder.Entity("Models.Trails", b =>
                 {
-                    b.HasOne("Dotnet_WebAPI.Models.Yala", "Yala")
-                        .WithMany()
-                        .HasForeignKey("YalaId")
+                    b.HasOne("Dotnet_WebAPI.Models.NationalPark", "NationalPark")
+                        .WithMany("Trails")
+                        .HasForeignKey("NationalParkId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Yala");
+                    b.Navigation("NationalPark");
+                });
+
+            modelBuilder.Entity("Dotnet_WebAPI.Models.NationalPark", b =>
+                {
+                    b.Navigation("Trails");
                 });
 #pragma warning restore 612, 618
         }

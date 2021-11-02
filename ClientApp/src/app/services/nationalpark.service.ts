@@ -20,7 +20,7 @@ export class NationalparkService {
   gettrails(id:number):Observable<trails[]>{
     return this.http.get<trails[]>(this.APIUrl+'Home/'+id);
   }
-  getAlltrails():Observable<trails[]>{
-    return this.http.get<trails[]>(this.APIUrl+'Trails/');
+  gettrailsbyNp(id:number):Observable<trails[]>{
+    return this.http.get<trails[]>(this.APIUrl+'Trails/'+id);
   }
 }

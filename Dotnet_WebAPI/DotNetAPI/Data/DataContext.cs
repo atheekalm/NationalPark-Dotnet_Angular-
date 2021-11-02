@@ -10,7 +10,7 @@ namespace Dotnet_WebAPI.Data
         {
             
         }
-        public DbSet<NationalPark> Yala { get; set; }
+        public DbSet<NationalPark> NationalParks { get; set; }
         public DbSet<Trails> Trails { get; set; }
     }
 }
